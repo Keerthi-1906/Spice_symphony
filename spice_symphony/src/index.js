@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import ContactPage from './pages/contact_page';
+import ReviewsPage from './pages/reviws_page';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ContactPage/>
+    <ReviewsPage/>
   </React.StrictMode>
 );
 
