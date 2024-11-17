@@ -2,13 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import AboutUs from './Components/about_us';
+// import AboutUs from './Components/about_us';
+// import MenuPage from './pages/menu_page';
+// import OrderPage from './pages/order_page';
+import LoginPage from './Components/login';
+// import HomePage from './pages/home_page'
+// import RegisterPage from './Components/register';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-import MenuPage from './pages/menu_page';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+// const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MenuPage/>
+    {/* <OrderPage/> */}
+    <LoginPage/>
+    {/* <RegisterPage/> */}
+    {/* <HomePage/> */}
   </React.StrictMode>
 );
 

@@ -16,10 +16,10 @@ function Footer() {
                 <h1 className='text-xl text-yellow-400'>Navigate</h1>
                 <div className='flex space-x-9'>
                     <nav className='list-none space-y-2'>
-                        <li>Home</li>
+                        <li className='text-yellow-500'>Home</li>
                         <li>About Us</li>
                         <li>Menu</li>
-                        <li className='text-yellow-500'>Gallery</li>
+                        <li >Gallery</li>
                     </nav>
                     <nav className='list-none space-y-2'>
                         <li>Reserve</li>

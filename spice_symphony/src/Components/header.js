@@ -9,10 +9,10 @@ function Header() {
             </div>
             <div>
                 <nav className='list-none flex space-x-6 px-2'>
-                    <li>Home</li>
+                    <li className='text-yellow-500'>Home</li>
                     <li>About Us</li>
                     <li>Menu</li>
-                    <li className='text-yellow-500'>Gallery</li>
+                    <li >Gallery</li>
                     <li>Reserve</li>
                     <li >Contact</li>
                     <li>Order Now</li>
