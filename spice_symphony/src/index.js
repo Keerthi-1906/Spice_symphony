@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import LoginPage from './Components/login';
 import AboutUs from './Components/about_us';
 import MenuPage from './pages/menu_page';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <ReviewsPage/>
+    <MenuPage/>
   </React.StrictMode>
 );
 
