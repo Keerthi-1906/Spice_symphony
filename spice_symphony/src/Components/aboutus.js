@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const AboutUs = () => {
   return (
     <div className="bg-black text-white min-h-screen flex items-center justify-center">
@@ -15,9 +15,10 @@ const AboutUs = () => {
             techniques, ensuring every dish offers a unique and unforgettable
             dining experience.
           </p>
-          <button className="mt-8 px-6 py-2 bg-yellow-500 text-black font-medium rounded-full hover:bg-yellow-600 transition">
-            View More -&gt;
-          </button>
+          <div className="h-8"></div>
+          <Link to='/menu' className=" px-6 py-3 bg-yellow-500 text-black font-medium rounded-full hover:bg-yellow-600 transition">
+            Order Now
+          </Link>
         </div>
 
         {/* Image Section */}

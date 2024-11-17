@@ -2,14 +2,46 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import LoginPage from './Components/login';
-import AboutUs from './Components/about_us';
+import AboutUs from './pages/aboutus_page';
 import MenuPage from './pages/menu_page';
+import HomePage from "./pages/home_page";
+import GalleryPage from "./pages/gallery_page"
+import ReservationPage from './pages/reservation_page';
+import ContactPage from './pages/contact_page';
+import {createBrowserRouter , RouterProvider } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const router = createBrowserRouter([
+  {
+  path: '/',
+  element: <HomePage/>,
+  errorElement: <div>404 Not Found</div>
+  },
+  {
+    path: '/about',
+    element: <AboutUs/>
+  },
+  {
+    path: '/menu',
+    element: <MenuPage/>
+  },
+  {
+    path: '/gallery',
+    element: <GalleryPage/>
+  },
+  {
+    path: '/reserve',
+    element: <ReservationPage/>
+  },
+  {
+    path: '/contact',
+    element: <ContactPage/>
+  }
+]);
 
 root.render(
   <React.StrictMode>
-    <MenuPage/>
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 
