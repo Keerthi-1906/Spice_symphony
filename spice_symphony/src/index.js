@@ -3,6 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 <<<<<<< HEAD
+// import HomePage from './pages/home_page';
+// import Gallery from './pages/gallery_page';
+import GalleryPage from './pages/gallery_page';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <GalleryPage/>
+=======
+<<<<<<< HEAD
 import AboutUs from './Components/about_us';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,6 +25,7 @@ root.render(
   <React.StrictMode>
     <MenuPage/>
 >>>>>>> 24f3dd3575a6980bc1baf4506ce4d6be0143c71c
+>>>>>>> 2f31dcdde87f2fd4a6b720530ae9b8301bb63bfa
   </React.StrictMode>
 );
 

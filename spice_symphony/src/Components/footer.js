@@ -19,11 +19,11 @@ function Footer() {
                         <li>Home</li>
                         <li>About Us</li>
                         <li>Menu</li>
-                        <li>Gallery</li>
+                        <li className='text-yellow-500'>Gallery</li>
                     </nav>
                     <nav className='list-none space-y-2'>
                         <li>Reserve</li>
-                        <li className='text-yellow-500'>Contact</li>
+                        <li >Contact</li>
                         <li>Order Now</li>
                     </nav>
                 </div>
