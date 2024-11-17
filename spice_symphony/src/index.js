@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import ContactPage from './pages/contact_page';
+// import HomePage from './pages/home_page';
+// import Gallery from './pages/gallery_page';
+import GalleryPage from './pages/gallery_page';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ContactPage/>
+    <GalleryPage/>
   </React.StrictMode>
 );
 
