@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import AboutUs from './Components/about_us';
-const root = ReactDOM.createRoot(document.getElementById('root'));
 import MenuPage from './pages/menu_page';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <React.StrictMode>
     <MenuPage/>
