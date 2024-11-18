@@ -39,7 +39,16 @@ const router = createBrowserRouter([
   {
     path: '/contact',
     element: <ContactPage/>
+  },
+  {
+    path: '/order',
+    element: <OrderPage/>
+  },
+  {
+    path: '/newdish',
+    element: <CreateNewDishPage/>
   }
+
 ]);
 
 root.render(
