@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
+
   // State for form fields and error message
   const [username, setName] = useState('');
   const [email, setEmail] = useState('');

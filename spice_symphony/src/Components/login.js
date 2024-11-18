@@ -70,6 +70,7 @@ const LoginPage = () => {
                 className="w-full p-2 bg-gray-800 text-white border border-gray-600 rounded"
                 required
               />
+
             </div>
             <button
               type="submit"
