@@ -8,7 +8,7 @@ const donenv = require("dotenv").config();
 
 conncetdb();
 const app = express();
-// app.use(cors());
+app.use(cors());
 const port = process.env.PORT || 3000;
 
 app.use(express.json());

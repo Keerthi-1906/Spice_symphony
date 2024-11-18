@@ -4,37 +4,39 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 import LoginPage from './Components/login';
+import RegisterPage from './Components/register'
 import AboutUs from './pages/aboutus_page';
+import OrderPage from './pages/order_page';
 import MenuPage from './pages/menu_page';
 import HomePage from "./pages/home_page";
 import GalleryPage from "./pages/gallery_page"
 import ReservationPage from './pages/reservation_page';
 import ContactPage from './pages/contact_page';
-import {createBrowserRouter , RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 const router = createBrowserRouter([
   {
-  path: '/',
-  element: <HomePage/>,
-  errorElement: <div>404 Not Found</div>
+    path: '/',
+    element: <HomePage />,
+    errorElement: <div>404 Not Found</div>
   },
   {
     path: '/about',
-    element: <AboutUs/>
+    element: <AboutUs />
   },
   {
     path: '/menu',
-    element: <MenuPage/>
+    element: <MenuPage />
   },
   {
     path: '/gallery',
-    element: <GalleryPage/>
+    element: <GalleryPage />
   },
   {
     path: '/reserve',
-    element: <ReservationPage/>
+    element: <ReservationPage />
   },
   {
     path: '/contact',
@@ -52,9 +54,9 @@ const router = createBrowserRouter([
 ]);
 
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>
+  // <React.StrictMode>
+    <RouterProvider router={router} />
+  // {/* </React.StrictMode> */}
 );
 
 // If you want to start measuring performance in your app, pass a function
