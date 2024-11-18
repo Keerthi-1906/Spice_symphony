@@ -38,16 +38,20 @@ const registeruser = asyncHandler(async (req, res) => {
     }
     console.log(username, email, password);
     const userAvailable = await User.findOne({ email });
+   
     if (userAvailable) {
         res.status(400);
         throw new Error("Email already exists");
     }
     //Hash password
+
     const hashedPassword = await bcrypt.hash(password, 10);
+
 
     const user = await User.create({
         username, email, password: hashedPassword
     });
+
 
     console.log("gveruigv");
 
@@ -61,25 +65,37 @@ const registeruser = asyncHandler(async (req, res) => {
 
 //private
 const currentuser = asyncHandler(async (req, res) => {
-    res.status(200).json(req.user);
+    const email = req.user.email;
+    const user = await User.findOne({ email });
+
+    res.status(200).json(user);
 })
 
 const addOrder = async (req, res) => {
+    // res.status(200).json(req.user);
+
     try {
+        console.log("hello")
         const { order_dishes } = req.body;
+        console.log(req.user);
         const userdetails = req.user;
         const email = userdetails.email;
         // Validate if the user exists
         const user = await User.findOne({ email });
-
+        console.log("hello")
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
         console.log(order_dishes)
         // Add order dishes to the user's order_dishes array
         user.order_dishes = order_dishes;
+        console.log("here");
+        try{
         await user.save();
-
+        }catch(error){
+            console.log(error);
+        }
+        console.log("not saved")
         res.status(200).json({ message: "Order changed successfully", user });
     } catch (error) {
         res.status(500).json({ message: error.message });

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {dishSchema} = require("../models/menumodel")
+const { dishSchema } = require("../models/menumodel")
 const userSchema = new mongoose.Schema(
   {
     username: {
@@ -16,16 +16,22 @@ const userSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      unique: true,
-      match: [/^\d{10}$/, "Please enter a valid 10-digit phone number"], // Validates phone number format
     },
-    order_dishes: [dishSchema],
+    order_dishes: [{
+      name: { type: String, required: true },
+      description: { type: String, required: true },
+      price: { type: Number, required: true },
+      vegetarian: { type: Boolean, required: true },
+      spicy: { type: Boolean, required: true },
+      image: { type: String, required: true },
+      quantity: {type:Number , default: 0}
+    }],
     address: {
       type: String,
     },
     password: {
       type: String,
-      required: true, 
+      required: true,
     },
   },
   {
