@@ -13,7 +13,7 @@ const RegisterPage = () => {
             }}
         >
             <div className="flex flex-col items-center"> {/* Container for centering */}
-                <h1 className="text-4xl font-bold text-yellow-500 mb-8">Spicy Symphony</h1> {/* Centered Header */}
+                <h1 className="text-4xl font-bold text-yellow-500 mb-8">Spice Symphony</h1> {/* Centered Header */}
                 
                 <div className="bg-black bg-opacity-80 text-white p-8 rounded-lg shadow-lg w-112"> {/* Register Box */}
                     <h2 className="text-3xl font-bold text-center mb-6">REGISTER</h2>

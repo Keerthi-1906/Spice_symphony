@@ -2,17 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import LoginPage from './Components/login';
-// import RegisterPage from './Components/register';
-// import AboutUs from './Components/about_us';
-// import MenuPage from './pages/menu_page';
+import CreateDishPage from './Components/admin_newdish';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    {/* <MenuPage/> */}
-    {/* <RegisterPage/> */}
-    <LoginPage/>
+    <CreateDishPage/>
   </React.StrictMode>
 );
 
