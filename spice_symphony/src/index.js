@@ -40,17 +40,17 @@ const router = createBrowserRouter([
   },
   {
     path: '/contact',
-    element: <ContactPage />
-  }, {
-    path: '/login',
-    element: <LoginPage />
-  }, {
-    path: '/register',
-    element: <RegisterPage />
-  }, {
+    element: <ContactPage/>
+  },
+  {
     path: '/order',
-    element: <OrderPage />
+    element: <OrderPage/>
+  },
+  {
+    path: '/newdish',
+    element: <CreateNewDishPage/>
   }
+
 ]);
 
 root.render(
