@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReservationPage = () => {
+const Reservation = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black text-white">
       <div className="w-[90%] max-w-[1200px] bg-black rounded-lg p-8">
@@ -73,4 +73,4 @@ const ReservationPage = () => {
   );
 };
 
-export default ReservationPage;
+export default Reservation;
