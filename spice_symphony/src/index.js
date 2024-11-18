@@ -50,8 +50,13 @@ const router = createBrowserRouter([
   }, {
     
     path: '/order',
-    element: <OrderPage />
+    element: <OrderPage/>
+  },
+  {
+    path: '/newdish',
+    element: <CreateNewDishPage/>
   }
+
 ]);
 
 root.render(
