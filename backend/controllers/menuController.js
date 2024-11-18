@@ -1,4 +1,4 @@
-const Menu = require("../models/menumodel");
+const {Menu} = require("../models/menumodel");
 
 // Get all menu items
 const getAllMenuItems = async (req, res) => {
@@ -9,23 +9,25 @@ const getAllMenuItems = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-// Add a menu item
-const addMenuItem =  async (req, res) => {
+const addMenuItem = async (req, res) => {
   try {
     const { type, name, description, price, vegetarian, spicy, image } = req.body;
     console.log("tryingg");
-    // Check if the type already exists
-    let menuType = await Menu.findOne({ type });
+
+    // Find a menu document that contains the category with the given 'type'
+    let menuType = await Menu.findOne({ 'categories.type': type });
+
     console.log("here");
+
     if (!menuType) {
+      // If no menu exists with the specified type, create a new menu document
       menuType = new Menu({
         categories: [{
           type,  // The category type
           dishes: [{ name, description, price, vegetarian, spicy, image }]  // Add the first dish
         }]
       });
-    }else {
+    } else {
       // If the menu exists, find the specific category where the dish should be added
       const category = menuType.categories.find(category => category.type === type);
 
@@ -38,14 +40,53 @@ const addMenuItem =  async (req, res) => {
       // Add the new dish to the category
       category.dishes.push({ name, description, price, vegetarian, spicy, image });
     }
-    console.log("here-2")
+
+    console.log("here-2");
     await menuType.save();
 
     res.status(201).json(menuType);
   } catch (error) {
-    res.status(500).json({ message: error.message , catch: "from catch"});
+    res.status(500).json({ message: error.message, catch: "from catch" });
   }
 };
+
+
+// Add a menu item
+// const addMenuItem =  async (req, res) => {
+//   try {
+//     const { type, name, description, price, vegetarian, spicy, image } = req.body;
+//     console.log("tryingg");
+//     // Check if the type already exists
+//     let menuType = await Menu.findOne({ type });
+//     console.log("here");
+//     if (!menuType) {
+//       menuType = new Menu({
+//         categories: [{
+//           type,  // The category type
+//           dishes: [{ name, description, price, vegetarian, spicy, image }]  // Add the first dish
+//         }]
+//       });
+//     }else {
+//       // If the menu exists, find the specific category where the dish should be added
+//       const category = menuType.categories.find(category => category.type === type);
+
+//       // Check if the dish already exists in the category
+//       const existingDish = category.dishes.find(dish => dish.name === name);
+//       if (existingDish) {
+//         return res.status(400).json({ message: 'Dish with this name already exists in this menu type' });
+//       }
+
+//       // Add the new dish to the category
+//       category.dishes.push({ name, description, price, vegetarian, spicy, image });
+//     }
+//     console.log("here-2")
+//     await menuType.save();
+
+//     res.status(201).json(menuType);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message , catch: "from catch"});
+//   }
+// };
 
 // Update a menu item
 const updateMenuItem = async (req, res) => {

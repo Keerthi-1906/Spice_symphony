@@ -7,7 +7,7 @@ function Footer() {
             <div className='p-12 px-52 flex justify-between'>
                 <div>
                     <div className='flex'>
-                        <div className='py-3'>Logo</div>
+                        {/* <div className='py-3'>Logo</div> */}
                         <div className='px-4 text-4xl'>Spice symphony</div>
                     </div>
                     <p className='w-72 mt-5'>

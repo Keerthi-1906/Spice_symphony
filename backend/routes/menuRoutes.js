@@ -7,7 +7,7 @@ const { getAllMenuItems,
 
 // Route to add a dish
 
-router.route('/adddish').post(addMenuItem);
+router.route('/add-dish').post(addMenuItem);
 // router.post('/adddish', addMenuItem);
 
 // Route to get the entire menu
