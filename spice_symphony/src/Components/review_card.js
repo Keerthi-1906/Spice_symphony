@@ -19,7 +19,7 @@ function ReviewCard({
     }
 
     return (
-        <div className='w-96 p-4 text-white'>
+        <div className='p-4 text-white' style={{width: "23rem"}}>
             <div className='w-full h-full rounded-md bg-no-repeat flex flex-col flex-grow' style={{ backgroundImage: "url('/reviews.png')" }}>
                 <div className='py-4 h-52'>
                     <h1 className='flex justify-center text-xl px-4 py-5'>{name}</h1>

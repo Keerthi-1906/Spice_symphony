@@ -1,6 +1,6 @@
 import React from 'react';
 
-const App = () => {
+const Gallery = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navbar */}
@@ -56,4 +56,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Gallery;

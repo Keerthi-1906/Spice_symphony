@@ -19,9 +19,4 @@ export const reviews = [
     "content": "The ambiance is very welcoming, and the lighting sets the mood perfectly. The steak was cooked to perfection.",
     "rating": 3
   },
-  {
-    "name": "Sophia Martinez",
-    "content": "Amazing atmosphere with great attention to detail in decor. The sushi platter was delightful.",
-    "rating": 3.5
-  }
 ]

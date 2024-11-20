@@ -17,11 +17,11 @@ const menuCategorySchema = new mongoose.Schema({
 });
 
 // Define the model for the menu
-const menuSchema = new mongoose.Schema({
-  categories: [menuCategorySchema]  // Array of menu categories
-});
+// const menuSchema = new mongoose.Schema({
+//   categories: [menuCategorySchema]  // Array of menu categories
+// });
 
 // Create and export the model
-const Menu = mongoose.model('Menu', menuSchema);
+const category = mongoose.model('Menu', menuCategorySchema);
 
-module.exports = {Menu, dishSchema};
+module.exports = {category};
