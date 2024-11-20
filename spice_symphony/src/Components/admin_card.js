@@ -34,8 +34,14 @@ function AdminCard({
     }
     const deletedish = async () => {
         try {
+            const token = localStorage.getItem("jwtToken");
+            if(!token){
+                navigate("/login");
+            }
             await axios.delete("http://localhost:5000/api/menu/delete-dish",
                 {
+                    headers: { Authorization: `Bearer ${token}` },
+
                     data: {
                         type: type,
                         name: title,
@@ -44,6 +50,7 @@ function AdminCard({
             await callback();
             // navigate('/adminmenu');
         } catch (error) {
+            navigate("/login");
             console.log("vkjevjkebrvk")
             console.log(error);
         }

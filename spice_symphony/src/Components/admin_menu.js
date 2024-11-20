@@ -10,20 +10,28 @@ function AdminMenu() {
     const navigate = useNavigate();
     const getData = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/api/menu/get-menu");
+            const token = localStorage.getItem("jwtToken");
+            if(!token){
+                navigate("/login");
+            }
+            const response = await axios.get("http://localhost:5000/api/menu/get-admin-menu",
+                { headers: { Authorization: `Bearer ${token}` } }
+
+            );
             console.log(response.data);
             setmenudata(response.data);
             if (response.data.length > 0) {
                 setSelected(response.data[0]?.type || "");
             }
         } catch (error) {
+            navigate("/login")
             console.error("Error fetching menu data:", error);
         }
     };
     useEffect(() => {
         getData();
 
-    }, [])
+    },[])
 
     const getDishes = () => {
         for (let category of data) {
@@ -34,18 +42,19 @@ function AdminMenu() {
         return [];
     };
 
-    const addnewitem = () =>{
-        navigate("/dish" , {
+    const addnewitem = () => {
+        navigate("/dish", {
             state: {
-            name: "",
-            type: "",
-            title: "Add New Dish",
-            price: 0,
-            disc: "",
-            spicy: false,
-            vegetarian: true,
-            image: "/default.png"
-        }});
+                name: "",
+                type: "",
+                title: "Add New Dish",
+                price: 0,
+                disc: "",
+                spicy: false,
+                vegetarian: true,
+                image: "/default.png"
+            }
+        });
     }
 
     return (

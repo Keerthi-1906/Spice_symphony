@@ -167,7 +167,8 @@ const Order = () => {
           </div>
           <p className="text-sm">123 Imaginary Lane, Dreamtown, Maharashtra, 400001, India.</p>
 
-          <button className="mt-6 w-full bg-yellow-400 text-black font-semibold py-2 rounded hover:bg-yellow-500">
+          <button className="mt-6 w-full bg-yellow-400 text-black font-semibold py-2 rounded hover:bg-yellow-500"
+          onClick={()=>{navigate("/final")}}>
             Pay Now
           </button>
         </div>

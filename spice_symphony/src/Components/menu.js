@@ -150,7 +150,7 @@ function Menu() {
         </div>
       </div>
 
-      <div className="flex justify-end mt-10">
+      <div className="fixed bottom-5 right-4">
         <button onClick={showorder} className="bg-yellow-500 text-black py-2 px-6 rounded-md hover:bg-yellow-500">
           Cart
         </button>

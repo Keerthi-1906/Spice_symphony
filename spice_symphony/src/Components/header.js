@@ -8,6 +8,7 @@ function Header() {
     // Function to check the token
     const checkToken = () => {
       const savedToken = localStorage.getItem('jwtToken');
+
       console.log(savedToken);
       setToken(savedToken);
     };
@@ -25,7 +26,8 @@ function Header() {
   }, []); // Empty dependency array to run only on mount and unmount
 
   const Logout = () => {
-    localStorage.setItem('jwtToken', "");
+    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("cart");
     setToken(null); // Update state to trigger a re-render
   };
 
@@ -91,8 +93,8 @@ function Header() {
             </NavLink>
           </li>
           <li>
-            {token !== "" ? (
-              <button onClick={Logout} className='bg-yellow-400 py-1 px-3 rounded-md text-black'>Logout</button>
+            {token !== null ? (
+              <button onClick={Logout} className='bg-yellow-500 py-1 -mt-1 px-3 rounded-md text-black'>Logout</button>
             ) : (
               <NavLink
                 to="/login"

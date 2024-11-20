@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
+import FinalPage from './pages/final_page';
 import AdminMenuPage from './pages/adminmenu_page';
 import LoginPage from './Components/login';
 import RegisterPage from './Components/register'
@@ -64,6 +64,9 @@ const router = createBrowserRouter([
   {
     path: '/dish',
     element: <CreateDishPage/>
+  },{
+    path: '/final',
+    element: <FinalPage/>
   }
 
 ]);

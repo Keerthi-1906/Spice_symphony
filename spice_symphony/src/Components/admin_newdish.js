@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useLocation , useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const CreateDishPage = () => {
     const { state } = useLocation();
@@ -29,16 +29,27 @@ const CreateDishPage = () => {
 
         try {
             // Making a POST request to the API endpoint
+            const token = localStorage.getItem("jwtToken");
+            if(!token){
+                navigate("/login");
+            }
+            if (state.title === "Update Dish") {
+                await axios.put('http://localhost:5000/api/menu/update-dish', newDish,
+                    { headers: { Authorization: `Bearer ${token}` } }
 
-            if (state.title == "Update Dish") {
-                const response = await axios.put('http://localhost:5000/api/menu/update-dish', newDish)
+                )
             } else {
-                const response = await axios.post('http://localhost:5000/api/menu/add-dish', newDish);
+                await axios.post('http://localhost:5000/api/menu/add-dish', newDish,
+                    { headers: { Authorization: `Bearer ${token}` } }
+
+                );
             }
             navigate('/adminmenu')
             // console.log('Dish added successfully:', response.data);
             // You can add additional logic here, e.g., redirecting or displaying a success message
         } catch (error) {
+            navigate("/login");
+
             console.error('Error adding dish:', error);
             // Optionally handle the error, e.g., providing feedback to the user
         }
