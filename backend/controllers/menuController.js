@@ -9,23 +9,43 @@ const getAllMenuItems = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+const getmenuitems_admin = async (req, res) => {
+  try {
+    const userdetails = req.user;
+    const email = userdetails.email;
+    if (email !== "admin@gmail.com") {
+      res.status(401).json({ "message": "User unauthorized" })
+    } else {
+      const menu = await category.find();
+      res.status(200).json(menu);
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 const addMenuItem = async (req, res) => {
   try {
     console.log(req.body);
-    const { type, name, description, price, vegetarian, spicy, image } = req.body;
-    console.log(type);
-    let categorytype = await category.findOne({ 'type': type });
-    if (!categorytype) {
-      categorytype = new category({
-        type,
-        dishes: [{ name, description, price, vegetarian, spicy, image }]
-      })
+    const userdetails = req.user;
+    const email = userdetails.email;
+    if (email !== "admin@gmail.com") {
+      res.status(401).json({ "message": "User unauthorized" })
     } else {
-      categorytype.dishes.push({ name, description, price, vegetarian, spicy, image })
+      const { type, name, description, price, vegetarian, spicy, image } = req.body;
+      console.log(type);
+      let categorytype = await category.findOne({ 'type': type });
+      if (!categorytype) {
+        categorytype = new category({
+          type,
+          dishes: [{ name, description, price, vegetarian, spicy, image }]
+        })
+      } else {
+        categorytype.dishes.push({ name, description, price, vegetarian, spicy, image })
+      }
+      console.log("here-2");
+      await categorytype.save();
+      res.status(201).json(categorytype);
     }
-    console.log("here-2");
-    await categorytype.save();
-    res.status(201).json(categorytype);
   } catch (error) {
     res.status(500).json({ message: error.message, catch: "from catch" });
   }
@@ -35,26 +55,31 @@ const addMenuItem = async (req, res) => {
 const updateMenuItem = async (req, res) => {
   try {
     const { type, name, description, price, vegetarian, spicy, image } = req.body;
+    const userdetails = req.user;
+    const email = userdetails.email;
+    if (email !== "admin@gmail.com") {
+      res.status(401).json({ "message": "User unauthorized" })
+    } else {
+      let categorytype = await category.findOne({ type: type });
+      if (!categorytype) {
+        return res.status(400).json({ message: 'category not found' });
+      }
+      let dishindex = categorytype.dishes.findIndex(dish => dish.name === name);
+      if (dishindex === -1) {
+        return res.status(400).json({ message: "dish not found" });
+      }
+      categorytype.dishes[dishindex] = {
+        name,
+        description,
+        price,
+        vegetarian,
+        spicy,
+        image
+      }
 
-    let categorytype = await category.findOne({ type: type });
-    if (!categorytype) {
-      return res.status(400).json({ message: 'category not found' });
+      await categorytype.save();
+      res.status(200).json(categorytype);
     }
-    let dishindex = categorytype.dishes.findIndex(dish => dish.name === name);
-    if (dishindex === -1) {
-      return res.status(400).json({ message: "dish not found" });
-    }
-    categorytype.dishes[dishindex] = {
-      name,
-      description,
-      price,
-      vegetarian,
-      spicy,
-      image
-    }
-
-    await categorytype.save();
-    res.status(200).json(categorytype);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: error.message });
@@ -67,6 +92,11 @@ const deleteMenuItem = async (req, res) => {
   try {
     const { type, name } = req.body;
     console.log(type, name, req.body)
+    const userdetails = req.user;
+    const email = userdetails.email;
+    if (email !== "admin@gmail.com") {
+      res.status(401).json({ "message": "User unauthorized" })
+    }
     let categorytype = await category.findOne({ type: type });
     if (!categorytype) {
       return res.status(400).json({ message: 'category not found' });
@@ -82,7 +112,7 @@ const deleteMenuItem = async (req, res) => {
     }
     console.log(categorytype);
     try {
-      await category.findOneAndUpdate({ type: type}, { $set: { dishes: { newdishes } } })
+      await category.findOneAndUpdate({ type: type }, { $set: { dishes: { newdishes } } })
     } catch (err) {
       console.log(err);
     }
@@ -98,4 +128,5 @@ module.exports = {
   addMenuItem,
   updateMenuItem,
   deleteMenuItem,
+  getmenuitems_admin
 };
