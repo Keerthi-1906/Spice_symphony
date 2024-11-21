@@ -13,9 +13,6 @@ import HomePage from "./pages/home_page";
 import GalleryPage from "./pages/gallery_page"
 import ReservationPage from './pages/reservation_page';
 import ContactPage from './pages/contact_page';
-// import CreateNewDishPage from "./Components/admin_newdish"
-// import AdminNewDish from './pages/adminnewdish_page';
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CreateDishPage from './Components/admin_newdish';
 
