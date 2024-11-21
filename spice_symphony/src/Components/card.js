@@ -17,7 +17,7 @@ function Card({
 
   return (
     <div className='bg-white rounded-md w-80 text-black'>
-      <img src={img} alt="food" className='w-80 rounded-md' />
+      <img src={img} alt="food" className='w-80 h-56 rounded-md object-cover' />
 
       <div className='p-4'>
         <h1 className='text-xl font-semibold'>{title}</h1>

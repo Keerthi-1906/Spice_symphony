@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 function Header() {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     // Function to check the token
     const checkToken = () => {
       const savedToken = localStorage.getItem('jwtToken');
+
+      console.log(savedToken);
       setToken(savedToken);
     };
 
@@ -24,7 +26,8 @@ function Header() {
   }, []); // Empty dependency array to run only on mount and unmount
 
   const Logout = () => {
-    localStorage.setItem('jwtToken', null);
+    localStorage.removeItem("jwtToken");
+    localStorage.removeItem("cart");
     setToken(null); // Update state to trigger a re-render
   };
 
@@ -32,7 +35,12 @@ function Header() {
     <div className='p-5 flex justify-between'>
       <div className='flex'>
         {/* <div className='py-1'>Logo</div> */}
-        <div className='px-4 text-2xl'>Spice Symphony</div>
+        <div className='px-4 text-center text-2xl font-serif '
+          style={{
+            background: "linear-gradient(45deg, rgb(255, 204, 0), rgb(139, 69, 19))",
+            WebkitBackgroundClip: "text",
+            color: "transparent",
+          }} >Spice Symphony</div>
       </div>
       <div>
         <nav className='list-none flex space-x-6 px-2'>
@@ -85,12 +93,12 @@ function Header() {
             </NavLink>
           </li>
           <li>
-            {token ? (
-              <button onClick={Logout}>Logout</button>
+            {token !== null ? (
+              <button onClick={Logout} className='bg-yellow-500 py-1 -mt-1 px-3 rounded-md text-black'>Logout</button>
             ) : (
               <NavLink
                 to="/login"
-                className={({ isActive }) => (isActive ? 'text-yellow-500' : '')}
+                className={({isActive})=>`bg-yellow-500 text-black py-1 px-3 rounded-md ${ isActive ? 'font-bold' : 'font-normal'}` }
               >
                 Login
               </NavLink>

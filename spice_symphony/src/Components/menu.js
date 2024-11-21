@@ -56,9 +56,10 @@ function Menu() {
   const getData = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/menu/get-menu");
+      console.log(response.data);
       setData(response.data);
       if (response.data.length > 0) {
-        setSelected(response.data[0].categories[0]?.type || "");
+        setSelected(response.data[0]?.type || "");
       }
     } catch (error) {
       console.error("Error fetching menu data:", error);
@@ -88,13 +89,11 @@ function Menu() {
   };
 
   const getDishes = () => {
-    for (let menu of data) {
-      for (let category of menu.categories) {
+    for (let category of data) {
         if (category.type === selected) {
           return category.dishes;
         }
       }
-    }
     return [];
   };
 
@@ -102,7 +101,19 @@ function Menu() {
     <div className="p-12">
       <h1 className="flex text-4xl text-yellow-300 justify-center">Menu</h1>
       <div className="flex justify-center">
-        {data.map((menu) =>
+        {
+          data.map((cat)=>{
+          return  <button key={cat._id} 
+            onClick={()=>setSelected(cat.type)}
+            className="rounded-full m-5 px-4 p-2 border-yellow-400 border-2 flex-wrap"
+              style={{
+                backgroundColor: cat.type === selected ? "#f8cf40" : "transparent",
+                color: cat.type === selected ? "black" : "white",
+              }}
+            >{cat.type}</button>
+          })
+        }
+        {/* {data.map((menu) =>
           menu.categories.map((category) => (
             <button
               key={category._id}
@@ -116,7 +127,7 @@ function Menu() {
               {category.type}
             </button>
           ))
-        )}
+        )} */}
       </div>
 
       <div className="flex justify-center">
@@ -139,7 +150,7 @@ function Menu() {
         </div>
       </div>
 
-      <div className="flex justify-end mt-10">
+      <div className="fixed bottom-5 right-4">
         <button onClick={showorder} className="bg-yellow-500 text-black py-2 px-6 rounded-md hover:bg-yellow-500">
           Cart
         </button>

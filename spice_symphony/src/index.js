@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
+import FinalPage from './pages/final_page';
+import AdminMenuPage from './pages/adminmenu_page';
 import LoginPage from './Components/login';
 import RegisterPage from './Components/register'
 import AboutUs from './pages/aboutus_page';
@@ -12,8 +13,8 @@ import HomePage from "./pages/home_page";
 import GalleryPage from "./pages/gallery_page"
 import ReservationPage from './pages/reservation_page';
 import ContactPage from './pages/contact_page';
-import CreateNewDishPage from './Components/admin_newdish';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import CreateDishPage from './Components/admin_newdish';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -54,15 +55,24 @@ const router = createBrowserRouter([
     element: <OrderPage/>
   },
   {
-    path: '/newdish',
-    element: <CreateNewDishPage/>
+    path: '/adminmenu',
+    element: <AdminMenuPage/>
   },
+  {
+    path: '/dish',
+    element: <CreateDishPage/>
+  },{
+    path: '/final',
+    element: <FinalPage/>
+  }
 
 ]);
 
 root.render(
   // <React.StrictMode>
+  <div className='bg-black'>
     <RouterProvider router={router} />
+    </div>
   // {/* </React.StrictMode> */}
 );
 
