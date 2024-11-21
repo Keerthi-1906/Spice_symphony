@@ -9,7 +9,7 @@ const LoginPage = () => {
                 backgroundImage: "url('/foodbg_black.jpg')", // Replace with your actual image path
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                opacity:0.8
+                opacity:1
             }}
         >
             <div className="flex flex-col items-center"> {/* Container for centering */}

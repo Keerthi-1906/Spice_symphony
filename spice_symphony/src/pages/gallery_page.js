@@ -6,6 +6,7 @@ function GalleryPage() {
     return (
         <div className=' bg-black text-white'>
             <Header />
+
             <Gallery />
             <Footer />
         </div>
